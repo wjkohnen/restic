@@ -1310,9 +1310,11 @@ func (c *Connection) objectPut(container string, objectName string, contents io.
 	extraHeaders := objectPutHeaders(objectName, &checkHash, Hash, contentType, h)
 	hash := md5.New()
 	var body io.Reader = contents
+	buf := bytes.NewBuffer(nil)
 	if checkHash {
-		body = io.TeeReader(contents, hash)
+		body = io.TeeReader(io.TeeReader(contents, hash), buf)
 	}
+
 	_, headers, err = c.storage(RequestOpts{
 		Container:  container,
 		ObjectName: objectName,
@@ -1329,6 +1331,7 @@ func (c *Connection) objectPut(container string, objectName string, contents io.
 	if checkHash {
 		receivedMd5 := strings.ToLower(headers["Etag"])
 		calculatedMd5 := fmt.Sprintf("%x", hash.Sum(nil))
+		fmt.Fprintf(os.Stderr, "swift.go: buffer is: %q\n", buf.Bytes())
 		fmt.Fprintf(os.Stderr, "swift.go: md5sums: %s ?= %s\n",
 			receivedMd5, calculatedMd5)
 		if receivedMd5 != calculatedMd5 {

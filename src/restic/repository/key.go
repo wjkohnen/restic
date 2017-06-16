@@ -232,7 +232,7 @@ func AddKey(ctx context.Context, s *Repository, password string, template *crypt
 		Name: restic.Hash(buf).String(),
 	}
 
-	debug.Log("about to save key in backend: %s", buf)
+	fmt.Fprintf(os.Stderr, "about to save key in backend: %q\n", buf)
 
 	err = s.be.Save(ctx, h, bytes.NewReader(buf))
 	if err != nil {
