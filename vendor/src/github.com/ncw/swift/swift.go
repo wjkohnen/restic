@@ -15,6 +15,7 @@ import (
 	"mime"
 	"net/http"
 	"net/url"
+	"os"
 	"path"
 	"strconv"
 	"strings"
@@ -1328,6 +1329,8 @@ func (c *Connection) objectPut(container string, objectName string, contents io.
 	if checkHash {
 		receivedMd5 := strings.ToLower(headers["Etag"])
 		calculatedMd5 := fmt.Sprintf("%x", hash.Sum(nil))
+		fmt.Fprintf(os.Stderr, "swift.go: md5sums: %s ?= %s\n",
+			receivedMd5, calculatedMd5)
 		if receivedMd5 != calculatedMd5 {
 			err = ObjectCorrupted
 			return
