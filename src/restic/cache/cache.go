@@ -45,7 +45,7 @@ var _ restic.Cache = &Cache{}
 
 // New returns a new cache for the repo ID at dir. If dir is the empty string,
 // the default cache location (according to the XDG standard) is used.
-func New(id string, dir string, repo restic.Repository, key *crypto.Key) (c *Cache, err error) {
+func New(id string, dir string, key *crypto.Key) (c *Cache, err error) {
 	if dir == "" {
 		dir, err = getXDGCacheDir()
 		if err != nil {
@@ -69,7 +69,7 @@ func New(id string, dir string, repo restic.Repository, key *crypto.Key) (c *Cac
 		}
 	}
 
-	subdirs := []string{"snapshots"}
+	subdirs := []string{"index"}
 	for _, p := range subdirs {
 		if err = os.MkdirAll(filepath.Join(dir, id, p), dirMode); err != nil {
 			return nil, err
