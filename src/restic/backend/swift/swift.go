@@ -1,6 +1,7 @@
 package swift
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -195,9 +196,15 @@ func (be *beSwift) Save(ctx context.Context, h restic.Handle, rd io.Reader) (err
 
 	encoding := "binary/octet-stream"
 
+	buf := bytes.NewBuffer(nil)
+
+	rd = io.TeeReader(rd, buf)
+
 	debug.Log("PutObject(%v, %v, %v)", be.container, objName, encoding)
 	_, err = be.conn.ObjectPut(be.container, objName, rd, true, "", encoding, nil)
 	debug.Log("%v, err %#v", objName, err)
+
+	debug.Log("PutObject sent: %q", buf.Bytes())
 
 	return errors.Wrap(err, "client.PutObject")
 }
