@@ -65,11 +65,11 @@ type loggingRoundTripper struct {
 // RoundTripper returns a new http.RoundTripper which logs all requests (if
 // debug is enabled). When debug is not enabled, upstream is returned.
 func RoundTripper(upstream http.RoundTripper) http.RoundTripper {
-	return loggingRoundTripper{eofDetectRoundTripper{upstream}}
+	return loggingRoundTripper{upstream}
 }
 
 func (tr loggingRoundTripper) RoundTrip(req *http.Request) (res *http.Response, err error) {
-	trace, err := httputil.DumpRequestOut(req, false)
+	trace, err := httputil.DumpRequestOut(req, true)
 	if err != nil {
 		Log("DumpRequestOut() error: %v\n", err)
 	} else {
@@ -82,7 +82,7 @@ func (tr loggingRoundTripper) RoundTrip(req *http.Request) (res *http.Response, 
 	}
 
 	if res != nil {
-		trace, err := httputil.DumpResponse(res, false)
+		trace, err := httputil.DumpResponse(res, true)
 		if err != nil {
 			Log("DumpResponse() error: %v\n", err)
 		} else {
