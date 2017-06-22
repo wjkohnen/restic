@@ -1,6 +1,7 @@
 package backend
 
 import (
+	"crypto/tls"
 	"net"
 	"net/http"
 	"restic/debug"
@@ -22,6 +23,7 @@ func Transport() http.RoundTripper {
 		IdleConnTimeout:       90 * time.Second,
 		TLSHandshakeTimeout:   10 * time.Second,
 		ExpectContinueTimeout: 1 * time.Second,
+		TLSClientConfig:       &tls.Config{InsecureSkipVerify: true},
 	}
 
 	// wrap in the debug round tripper
