@@ -62,7 +62,7 @@ func CleanupHandler(c <-chan os.Signal) {
 	for s := range c {
 		debug.Log("signal %v received, cleaning up", s)
 		fmt.Printf("%sInterrupt received, cleaning up\n", ClearLine())
-		Exit(0)
+		Exit(1)
 	}
 }
 
