@@ -1,3 +1,5 @@
+//+build openbsd
+//+build solaris
 package restic
 
 import "syscall"
