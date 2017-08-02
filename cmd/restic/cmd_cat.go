@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 
+	json "github.com/json-iterator/go"
 	"github.com/spf13/cobra"
 
 	"github.com/restic/restic/internal/backend"

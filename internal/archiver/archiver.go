@@ -2,7 +2,6 @@ package archiver
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"os"
@@ -10,6 +9,8 @@ import (
 	"sort"
 	"sync"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/errors"
 	"github.com/restic/restic/internal/restic"

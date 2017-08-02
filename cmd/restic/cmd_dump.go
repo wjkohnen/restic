@@ -4,11 +4,11 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"os"
 
+	json "github.com/json-iterator/go"
 	"github.com/spf13/cobra"
 
 	"github.com/restic/restic/internal/errors"

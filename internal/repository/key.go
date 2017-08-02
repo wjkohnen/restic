@@ -3,11 +3,12 @@ package repository
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 	"os/user"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/errors"
 	"github.com/restic/restic/internal/restic"

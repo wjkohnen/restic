@@ -1,8 +1,9 @@
 package restic
 
 import (
-	"encoding/json"
 	"testing"
+
+	json "github.com/json-iterator/go"
 )
 
 var blobTypeJSON = []struct {

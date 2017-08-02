@@ -1,13 +1,14 @@
 package restic_test
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"reflect"
 	"testing"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/restic"
 )

@@ -2,11 +2,12 @@ package restic_test
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/repository"
 	"github.com/restic/restic/internal/restic"

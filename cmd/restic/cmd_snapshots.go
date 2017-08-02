@@ -2,13 +2,14 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"sort"
 
-	"github.com/restic/restic/internal/restic"
+	json "github.com/json-iterator/go"
 	"github.com/spf13/cobra"
+
+	"github.com/restic/restic/internal/restic"
 )
 
 var cmdSnapshots = &cobra.Command{

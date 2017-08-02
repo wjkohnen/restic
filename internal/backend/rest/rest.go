@@ -2,7 +2,6 @@ package rest
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -11,6 +10,7 @@ import (
 	"path"
 	"strings"
 
+	json "github.com/json-iterator/go"
 	"golang.org/x/net/context/ctxhttp"
 
 	"github.com/restic/restic/internal/debug"

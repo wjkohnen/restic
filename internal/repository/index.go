@@ -2,10 +2,11 @@ package repository
 
 import (
 	"context"
-	"encoding/json"
 	"io"
 	"sync"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/errors"
 	"github.com/restic/restic/internal/restic"
@@ -440,10 +441,6 @@ func (idx *Index) Dump(w io.Writer) error {
 // isErrOldIndex returns true if the error may be caused by an old index
 // format.
 func isErrOldIndex(err error) bool {
-	if e, ok := err.(*json.UnmarshalTypeError); ok && e.Value == "array" {
-		return true
-	}
-
 	return false
 }
 

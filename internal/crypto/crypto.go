@@ -4,12 +4,12 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
-	"encoding/json"
 	"fmt"
 
-	"github.com/restic/restic/internal/errors"
-
+	json "github.com/json-iterator/go"
 	"golang.org/x/crypto/poly1305"
+
+	"github.com/restic/restic/internal/errors"
 )
 
 const (

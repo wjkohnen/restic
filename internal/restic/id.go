@@ -4,8 +4,9 @@ import (
 	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
 	"io"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/errors"
 )

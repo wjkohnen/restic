@@ -2,12 +2,13 @@ package restic
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"math/rand"
 	"testing"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/errors"
 

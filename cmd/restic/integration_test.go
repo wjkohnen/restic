@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"crypto/rand"
-	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -16,6 +15,8 @@ import (
 	"syscall"
 	"testing"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/errors"
 	"github.com/restic/restic/internal/restic"

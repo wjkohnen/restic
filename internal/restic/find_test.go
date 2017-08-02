@@ -3,7 +3,6 @@ package restic_test
 import (
 	"bufio"
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -11,6 +10,8 @@ import (
 	"sort"
 	"testing"
 	"time"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/repository"
 	"github.com/restic/restic/internal/restic"

@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"path/filepath"
 	"strings"
 	"time"
 
+	json "github.com/json-iterator/go"
 	"github.com/spf13/cobra"
 
 	"github.com/restic/restic/internal/debug"

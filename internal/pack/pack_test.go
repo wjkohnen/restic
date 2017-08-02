@@ -6,9 +6,10 @@ import (
 	"crypto/rand"
 	"crypto/sha256"
 	"encoding/binary"
-	"encoding/json"
 	"io"
 	"testing"
+
+	json "github.com/json-iterator/go"
 
 	"github.com/restic/restic/internal/backend/mem"
 	"github.com/restic/restic/internal/crypto"

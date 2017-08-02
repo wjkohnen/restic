@@ -1,20 +1,20 @@
 package restic
 
 import (
+	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 	"os/user"
+	"runtime"
 	"strconv"
 	"sync"
 	"syscall"
 	"time"
 
-	"github.com/restic/restic/internal/errors"
+	json "github.com/json-iterator/go"
 
-	"bytes"
-	"runtime"
+	"github.com/restic/restic/internal/errors"
 
 	"github.com/restic/restic/internal/debug"
 	"github.com/restic/restic/internal/fs"
